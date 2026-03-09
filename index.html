@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة البرومبتات الاحترافية | عبد الرحمن الريمي</title>
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --text: #c9d1d9; --blue: #58a6ff; --green: #238636; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #30363d; margin-bottom: 30px; }
+        .card { background: var(--card); border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 25px; transition: 0.3s; }
+        .card:hover { border-color: var(--blue); transform: translateY(-3px); }
+        .prompt-box { background: #000; padding: 15px; border-radius: 8px; font-family: monospace; direction: ltr; font-size: 14px; color: #7ee787; margin: 15px 0; border: 1px dashed #444; }
+        button { width: 100%; background: var(--green); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; }
+        button:active { transform: scale(0.98); }
+        footer { text-align: center; margin-top: 50px; opacity: 0.7; }
+        a { color: var(--blue); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 مكتبة البرومبتات الذكية</h1>
+            <p>أدوات احترافية لصناع المحتوى والمبرمجين</p>
+        </header>
+
+        <div class="card">
+            <h3>🎬 تلخيص اليوتيوب الاحترافي</h3>
+            <div class="prompt-box" id="p1">Summarize this video. List the main points. Extract steps, examples, and data. Rewrite in a simple, actionable format.</div>
+            <button onclick="copy('p1')">نسخ البرومبت</button>
+        </div>
+
+        <div class="card">
+            <h3>💻 تحليل الكود والأمن السيبراني</h3>
+            <div class="prompt-box" id="p2">Act as an Android Security Researcher. Analyze this code for potential vulnerabilities. Explain the logic clearly.</div>
+            <button onclick="copy('p2')">نسخ البرومبت</button>
+        </div>
+
+        <footer>
+            <p>تطوير عبد الرحمن الريمي | <a href="https://t.me/toe_Ai">قناتنا على تليجرام</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function copy(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text);
+            alert("تم النسخ بنجاح! ✅");
+        }
+    </script>
+</body>
+</html>
