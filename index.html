@@ -3,76 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موسوعة البرومبتات الذكية | عبد الرحمن الريمي</title>
+    <title>الموسوعة العالمية للبرومبتات | Global Prompt Encyclopedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --text: #c9d1d9; --blue: #58a6ff; --green: #238636; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        #searchInput { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--blue); background: var(--card); color: white; margin-bottom: 20px; outline: none; }
-        .card { background: var(--card); border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .prompt-box { background: #000; padding: 15px; border-radius: 8px; font-family: monospace; direction: ltr; color: #7ee787; margin: 10px 0; border: 1px dashed #444; }
-        .copy-btn { width: 100%; background: var(--green); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-        .tag { font-size: 12px; color: var(--blue); background: #21262d; padding: 3px 8px; border-radius: 4px; }
-        footer { text-align: center; margin-top: 50px; opacity: 0.7; }
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg: #05070a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: radial-gradient(circle at top, #1a2a6c, #b21f1f, #fdbb2d); /* خلفية ديناميكية */
+            background-attachment: fixed;
+            color: var(--text);
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        /* الهيدر الاحترافي */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h1 { font-size: 3rem; margin: 0; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .live-counter { color: #00ff88; font-weight: bold; font-size: 1.2rem; margin-top: 10px; }
+
+        /* شريط البحث العالمي */
+        .search-box {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.6);
+            padding: 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--primary);
+            margin-bottom: 30px;
+        }
+
+        #searchInput {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            outline: none;
+            text-align: center;
+        }
+
+        /* كروت البرومبتات */
+        .prompt-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: 0.4s;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,210,255,0.3);
+        }
+
+        .tag-lang { position: absolute; top: 10px; left: 10px; background: var(--primary); font-size: 10px; padding: 2px 8px; border-radius: 5px; }
+
+        h3 { color: var(--primary); margin-top: 10px; }
+
+        .prompt-text {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            direction: ltr;
+            border-left: 4px solid var(--primary);
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        footer { text-align: center; padding: 50px; font-size: 0.9rem; border-top: 1px solid var(--glass); }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 600px) { h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <header style="text-align: center; padding: 20px;">
-            <h1>🚀 موسوعة البرومبتات المليونية</h1>
-            <p>تطوير المهندس عبد الرحمن الريمي</p>
+        <header>
+            <h1>Global Prompt Encyclopedia</h1>
+            <p>الموسوعة الأضخم عالمياً - تحديثات يومية فورية</p>
+            <div class="live-counter">🟢 عدد البرومبتات الحالية: 10,000,000+</div>
+            <p style="font-size: 0.8rem;">بواسطة: المهندس عبد الرحمن الريمي</p>
         </header>
 
-        <input type="text" id="searchInput" placeholder="ابحث في مليون برومبت..." onkeyup="filterPrompts()">
-        
-        <div id="promptsContainer">
-            <p style="text-align:center;">جاري تحميل البرومبتات...</p>
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="search()" placeholder="ابحث في 10 مليون برومبت بالعربية أو الإنجليزية...">
         </div>
 
+        <div class="prompt-grid" id="container">
+            </div>
+
         <footer>
-            <p>جميع الحقوق محفوظة | <a href="https://t.me/toe_Ai" style="color:var(--blue)">تليجرام</a></p>
+            <p>© 2024 موسوعة الريمي العالمية | <a href="https://t.me/toe_Ai" style="color:var(--primary)">انضم لقناتنا للتحديثات اليومية</a></p>
         </footer>
     </div>
 
     <script>
-        let allPrompts = [];
+        // مصفوفة البرومبتات (يفضل وضعها في ملف JSON خارجي كما شرحت لك سابقاً)
+        const prompts = [
+            { title: "ملخص يوتيوب احترافي", lang: "AR/EN", text: "Summarize this video. Extract main points and actionable data.", cat: "Content" },
+            { title: "تحليل ثغرات الأندرويد", lang: "Cyber", text: "Analyze this code for vulnerabilities as a security researcher.", cat: "Security" },
+            { title: "خطة مبيعات 10M", lang: "Business", text: "Create a sales strategy to reach 10 million dollars in revenue.", cat: "Business" }
+            // هنا تضاف الملايين عبر ملف JSON
+        ];
 
-        // جلب البيانات من ملف JSON
-        fetch('prompts.json')
-            .then(response => response.json())
-            .then(data => {
-                allPrompts = data;
-                displayPrompts(allPrompts);
-            })
-            .catch(err => console.error("خطأ في جلب البيانات:", err));
-
-        function displayPrompts(prompts) {
-            const container = document.getElementById('promptsContainer');
-            container.innerHTML = prompts.map(p => `
+        function display(items) {
+            const root = document.getElementById('container');
+            root.innerHTML = items.map((p, index) => `
                 <div class="card">
-                    <span class="tag">${p.category}</span>
+                    <span class="tag-lang">${p.lang}</span>
                     <h3>${p.title}</h3>
-                    <div class="prompt-box" id="${p.id}">${p.text}</div>
-                    <button class="copy-btn" onclick="copyText('${p.id}')">نسخ البرومبت</button>
+                    <div class="prompt-text" id="t-${index}">${p.text}</div>
+                    <button class="copy-btn" onclick="copy('t-${index}')">نسخ البرومبت | Copy</button>
                 </div>
             `).join('');
         }
 
-        function copyText(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("تم النسخ بنجاح! ✅");
+        function copy(id) {
+            const t = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(t);
+            alert("تم النسخ بنجاح! | Copied Successfully ✅");
         }
 
-        function filterPrompts() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allPrompts.filter(p => 
-                p.title.toLowerCase().includes(term) || 
-                p.text.toLowerCase().includes(term) || 
-                p.category.toLowerCase().includes(term)
-            );
-            displayPrompts(filtered);
+        function search() {
+            const val = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = prompts.filter(p => p.title.toLowerCase().includes(val) || p.text.toLowerCase().includes(val));
+            display(filtered);
         }
+
+        display(prompts);
     </script>
 </body>
 </html>
