@@ -1,14 +1,14 @@
 [
   {
     "id": "p1",
-    "title": "تحليل أمن الأندرويد",
-    "category": "Cybersecurity",
-    "text": "Act as an Android Security expert. Analyze this APK for..."
+    "title": "🎬 تلخيص اليوتيوب الاحترافي",
+    "category": "Content Creation",
+    "text": "Summarize this video. List the main points. Extract steps, examples, and data. Rewrite in a simple, actionable format."
   },
   {
     "id": "p2",
-    "title": "خطة تسويق محتوى",
-    "category": "Marketing",
-    "text": "Generate a 30-day social media plan for..."
+    "title": "💻 تحليل الكود والأمن السيبراني",
+    "category": "Cybersecurity",
+    "text": "Act as an Android Security Researcher. Analyze this code for potential vulnerabilities. Explain the logic clearly."
   }
 ]
