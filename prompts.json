@@ -1,0 +1,14 @@
+[
+  {
+    "id": "p1",
+    "title": "تحليل أمن الأندرويد",
+    "category": "Cybersecurity",
+    "text": "Act as an Android Security expert. Analyze this APK for..."
+  },
+  {
+    "id": "p2",
+    "title": "خطة تسويق محتوى",
+    "category": "Marketing",
+    "text": "Generate a 30-day social media plan for..."
+  }
+]
