@@ -3,50 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة البرومبتات الاحترافية | عبد الرحمن الريمي</title>
+    <title>موسوعة البرومبتات الذكية | عبد الرحمن الريمي</title>
     <style>
         :root { --bg: #0d1117; --card: #161b22; --text: #c9d1d9; --blue: #58a6ff; --green: #238636; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }
-        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #30363d; margin-bottom: 30px; }
-        .card { background: var(--card); border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 25px; transition: 0.3s; }
-        .card:hover { border-color: var(--blue); transform: translateY(-3px); }
-        .prompt-box { background: #000; padding: 15px; border-radius: 8px; font-family: monospace; direction: ltr; font-size: 14px; color: #7ee787; margin: 15px 0; border: 1px dashed #444; }
-        button { width: 100%; background: var(--green); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; }
-        button:active { transform: scale(0.98); }
+        #searchInput { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--blue); background: var(--card); color: white; margin-bottom: 20px; outline: none; }
+        .card { background: var(--card); border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .prompt-box { background: #000; padding: 15px; border-radius: 8px; font-family: monospace; direction: ltr; color: #7ee787; margin: 10px 0; border: 1px dashed #444; }
+        .copy-btn { width: 100%; background: var(--green); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .tag { font-size: 12px; color: var(--blue); background: #21262d; padding: 3px 8px; border-radius: 4px; }
         footer { text-align: center; margin-top: 50px; opacity: 0.7; }
-        a { color: var(--blue); text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🚀 مكتبة البرومبتات الذكية</h1>
-            <p>أدوات احترافية لصناع المحتوى والمبرمجين</p>
+        <header style="text-align: center; padding: 20px;">
+            <h1>🚀 موسوعة البرومبتات المليونية</h1>
+            <p>تطوير المهندس عبد الرحمن الريمي</p>
         </header>
 
-        <div class="card">
-            <h3>🎬 تلخيص اليوتيوب الاحترافي</h3>
-            <div class="prompt-box" id="p1">Summarize this video. List the main points. Extract steps, examples, and data. Rewrite in a simple, actionable format.</div>
-            <button onclick="copy('p1')">نسخ البرومبت</button>
-        </div>
-
-        <div class="card">
-            <h3>💻 تحليل الكود والأمن السيبراني</h3>
-            <div class="prompt-box" id="p2">Act as an Android Security Researcher. Analyze this code for potential vulnerabilities. Explain the logic clearly.</div>
-            <button onclick="copy('p2')">نسخ البرومبت</button>
+        <input type="text" id="searchInput" placeholder="ابحث في مليون برومبت..." onkeyup="filterPrompts()">
+        
+        <div id="promptsContainer">
+            <p style="text-align:center;">جاري تحميل البرومبتات...</p>
         </div>
 
         <footer>
-            <p>تطوير عبد الرحمن الريمي | <a href="https://t.me/toe_Ai">قناتنا على تليجرام</a></p>
+            <p>جميع الحقوق محفوظة | <a href="https://t.me/toe_Ai" style="color:var(--blue)">تليجرام</a></p>
         </footer>
     </div>
 
     <script>
-        function copy(id) {
+        let allPrompts = [];
+
+        // جلب البيانات من ملف JSON
+        fetch('prompts.json')
+            .then(response => response.json())
+            .then(data => {
+                allPrompts = data;
+                displayPrompts(allPrompts);
+            })
+            .catch(err => console.error("خطأ في جلب البيانات:", err));
+
+        function displayPrompts(prompts) {
+            const container = document.getElementById('promptsContainer');
+            container.innerHTML = prompts.map(p => `
+                <div class="card">
+                    <span class="tag">${p.category}</span>
+                    <h3>${p.title}</h3>
+                    <div class="prompt-box" id="${p.id}">${p.text}</div>
+                    <button class="copy-btn" onclick="copyText('${p.id}')">نسخ البرومبت</button>
+                </div>
+            `).join('');
+        }
+
+        function copyText(id) {
             const text = document.getElementById(id).innerText;
             navigator.clipboard.writeText(text);
             alert("تم النسخ بنجاح! ✅");
+        }
+
+        function filterPrompts() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allPrompts.filter(p => 
+                p.title.toLowerCase().includes(term) || 
+                p.text.toLowerCase().includes(term) || 
+                p.category.toLowerCase().includes(term)
+            );
+            displayPrompts(filtered);
         }
     </script>
 </body>
